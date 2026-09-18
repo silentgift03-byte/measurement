@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <main>
+        <section>
+            <h2>Parent Dimensions</h2>
+            <p class="error"></p>
+            <div class="col">
+                <div id="inputField">
+                    <label for="Length">Length (cm)</label><br>
+                    <input type="number" id="pLength" name="Length" required>
+                </div>
+                <div id="inputField">
+                    <label for="width">Width (cm)</label><br>
+                    <input type="number" id="pWidth" name="width" required>
+                </div>
+                <div id="inputField">
+                    <label for="height">Height (cm)</label><br>
+                    <input type="number" id="pHeight" name="height" required>
+                </div>
+            </div>
+            <h3>Child Dimensions</h3>
+            <p class="error"></p>
+            <div class="col">
+                <div class="inputField">
+                    <label for="length">Length (cm)</label><br>
+                    <input type="number" id="cLength" name="length" required>
+                </div>
+                <div class="inputField">
+                    <label for="width">width (cm)</label><br>
+                    <input type="number" id="cWidth" name="width" required>
+                </div>
+                <div class="inputField">
+                    <label for="height">Height (cm)</label><br>
+                    <input type="number" id="cHeight" name="height" required>
+                </div>
+            </div>
+            <div class="col">
+               <button onclick="calculate()">Calculate</button>
+               <div class="output">Capacity: 0</div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function calculate() {
+            //get Parent input Element
+            const xLength = Number(document.getElementById("pLength").value);
+            const xWidth = Number(document.getElementById("pWidth").value);
+            const xHeight = Number(document.getElementById("pHeight").value);
+            //get Child input Element
+            const yLength = Number(document.getElementById("cLength").value);
+            const yWidth = Number(document.getElementById("cWidth").value);
+            const yHeight = Number(document.getElementById("cHeight").value);
+
+            //error handling
+            function errorMsg(msg1, msg2) {
+                document.querySelector(".error:nth-of-type(1)").innerHTML = msg1; 
+                document.querySelector(".error:nth-of-type(2)").innerHTML = msg2;
+            }
+             
+
+            //perform mathemathic ---> multiplication / division
+            const x = xLength * xWidth * xHeight;
+            const y = yLength * yWidth * yHeight;
+            const z = x / y;
+            document.querySelector(".output").innerHTML = `Capacity: ${z}`;
+        }
+    </script>
+</body>
+</html>
